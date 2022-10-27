@@ -19,17 +19,18 @@ export default{
         return {
             active: true,
             list: 'example.com'
+            }
         },
         created(){
-        
-        chrome.storage.sync.get(['toggleSitesActive', 'toggleSitesList'], (result) => {
-                this.active = result.toggleSitesActive;
-                this.list = result.toggleSitesList;
-            });
-            },
-
+            
+            chrome.storage.sync.get(['toggleSitesActive', 'toggleSitesList'], (result) => {
+                    this.active = result.toggleSitesActive;
+                    this.list = result.toggleSitesList;
+                });
+            
+        },
         methods: {
-            setActive(active){
+            setActive(active) {
                 this.active = active;
                 chrome.storage.sync.set({
                     toggleSitesActive: active
@@ -41,7 +42,5 @@ export default{
                 }, () => {});
             }
         }
-
     }
-
 </script>
